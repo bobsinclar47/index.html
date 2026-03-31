@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriverZone Pro</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #1A1A1A; color: white; font-family: Arial, sans-serif; }
+        .screen { display: none; min-height: 100vh; padding: 20px; padding-bottom: 80px; }
+        .screen.active { display: block; }
+        .login-container { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .logo { font-size: 64px; margin-bottom: 20px; }
+        h1 { color: #FF8800; margin-bottom: 10px; text-align: center; }
+        .subtitle { color: #888; margin-bottom: 40px; text-align: center; }
+        input { width: 100%; max-width: 300px; padding: 15px; border-radius: 10px; border: 1px solid #333; background: #2A2A2A; color: white; margin-bottom: 15px; font-size: 16px; }
+        .btn { width: 100%; max-width: 300px; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-bottom: 10px; font-size: 16px; }
+        .btn-primary { background: #FF8800; color: white; }
+        .btn-secondary { background: #333; color: #888; }
+        .zone-item { background: #2A2A2A; padding: 20px; border-radius: 12px; margin-bottom: 15px; border-left: 4px solid #FF8800; }
+        .nav-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #FF8800; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; }
+        .header { background: rgba(0,0,0,0.9); padding: 15px; border-radius: 10px; margin-bottom: 20px; position: fixed; top: 10px; left: 10px; right: 10px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; background: #444; color: white; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #2A2A2A; padding: 10px; display: flex; justify-content: space-around; border-top: 1px solid #333; z-index: 1000; }
+        .nav-button { background: none; border: none; color: #888; font-size: 12px; cursor: pointer; text-align: center; padding: 5px; }
+        .nav-button.active { color: #FF8800; }
+        .map-container { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 180px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .map-placeholder { font-size: 48px; margin-bottom: 10px; }
+        .loading { color: #888; font-style: italic; }
+        .pricing-card { background: #2A2A2A; padding: 20px; border-radius: 15px; margin-bottom: 15px; text-align: center; }
+        .pricing-card.featured { border: 2px solid #667eea; }
+        .price { font-size: 28px; font-weight: bold; color: #FF8800; margin: 15px 0; }
+    </style>
+</head>
+<body>
+
+    <div id="loginScreen" class="login-container">
+        <div class="logo">&#128663;</div>
+        <h1>DriverZone Pro</h1>
+        <p class="subtitle">Find Hot Zones, Earn More</p>
+        <input type="tel" id="phoneInput" placeholder="812 3456 7890">
+        <button class="btn btn-primary" onclick="doLogin()">CONTINUE</button>
+        <button class="btn btn-secondary" onclick="doSkip()">Skip Login</button>
+    </div>
+
+    <div id="mainScreen" class="screen">
+        <div class="header">
+            <span id="userBadge" class="badge">FREE</span>
+            <button onclick="refreshZones()" style="background:none;border:none;font-size:18px;cursor:pointer;">&#128260;</button>
+        </div>
+        <div style="padding-top: 80px;">
+            <div class="map-container">
+                <div>
+                    <div class="map-placeholder">&#128205;</div>
+                    <h3 id="geoStatus" style="margin-bottom:10px; color:white;">GPS Status</h3>
+                    <p id="geoInfo" style="color:rgba(255,255,255,0.8); font-size:14px;">Click button below</p>
+                    <button class="btn btn-primary" onclick="activateGeo()" style="max-width:200px;margin-top:15px;">Enable GPS</button>
+                </div>
+            </div>
+            <h2 style="margin-bottom:20px;">3 Nearest Zones</h2>
+            <div id="zonesList"><p class="loading">Loading...</p></div>
+        </div>
+        <div class="bottom-nav">
+            <button class="nav-button active" onclick="showScreen('mainScreen')">&#128205;<br>Map</button>
+            <button class="nav-button" onclick="showScreen('pricingScreen')">&#128142; Premium</button>
+            <button class="nav-button" onclick="showScreen('historyScreen')">&#128220; History</button>
+            <button class="nav-button" onclick="showScreen('settingsScreen')">&#9881; Settings</button>
+        </div>
+    </div>
+
+    <div id="pricingScreen" class="screen">
+        <div class="header"><span style="color:white;font-weight:bold;">Premium Plans</span></div>
+        <div style="padding-top:80px;">
+            <div class="pricing-card">
+                <h3 style="color:#f97316;">Premium</h3>
+                <p class="price">29k IDR/month</p>
+                <button class="btn btn-primary" onclick="upgrade(2)">CHOOSE</button>
+            </div>
+            <div class="pricing-card featured">
+                <h3 style="color:#667eea;">PRO</h3>
+                <p class="price">79k IDR/month</p>
+                <button class="btn btn-primary" onclick="upgrade(3)">CHOOSE</button>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <button class="nav-button" onclick="showScreen('mainScreen')">&#128205;<br>Map</button>
+            <button class="nav-button active" onclick="showScreen('pricingScreen')">&#128142; Premium</button>
+            <button class="nav-button" onclick="showScreen('historyScreen')">&#128220; History</button>
+            <button class="nav-button" onclick="showScreen('settingsScreen')">&#9881; Settings</button>
+        </div>
+    </div>
+
+    <div id="historyScreen" class="screen">
+        <div class="header"><span style="color:white;font-weight:bold;">History</span></div>
+        <div id="historyList" style="padding-top:80px;"><p style="color:#888;text-align:center;padding:40px;">No history</p></div>
+        <div class="bottom-nav">
+            <button class="nav-button" onclick="showScreen('mainScreen')">&#128205;<br>Map</button>
+            <button class="nav-button" onclick="showScreen('pricingScreen')">&#128142; Premium</button>
+            <button class="nav-button active" onclick="showScreen('historyScreen')">&#128220; History</button>
+            <button class="nav-button" onclick="showScreen('settingsScreen')">&#9881; Settings</button>
+        </div>
+    </div>
+
+    <div id="settingsScreen" class="screen">
+        <div class="header"><span style="color:white;font-weight:bold;">Settings</span></div>
+        <div style="padding-top:80px;">
+            <div class="zone-item">
+                <h3>Account</h3>
+                <p style="color:#888;margin:10px 0;">Plan: <span id="currentPlan">Free</span></p>
+                <button class="btn btn-primary" onclick="showScreen('pricingScreen')">Change</button>
+            </div>
+            <div class="zone-item">
+                <h3>About</h3>
+                <p style="color:#888;">Version 1.0</p>
+                <button class="btn btn-secondary" onclick="clearData()" style="margin-top:10px;">Clear Data</button>
+            </div>
+        </div>
+        <div class="bottom-nav">
+            <button class="nav-button" onclick="showScreen('mainScreen')">&#128205;<br>Map</button>
+            <button class="nav-button" onclick="showScreen('pricingScreen')">&#128142; Premium</button>
+            <button class="nav-button" onclick="showScreen('historyScreen')">&#128220; History</button>
+            <button class="nav-button active" onclick="showScreen('settingsScreen')">&#9881; Settings</button>
+        </div>
+    </div>
+
+    <script>
+        var zones = [
+            {id:'sudirman',name:'Sudirman',score:2450,revenue:2500,wait:5,lat:-6.2088,lng:106.8456},
+            {id:'senayan',name:'Senayan',score:2100,revenue:2200,wait:8,lat:-6.2253,lng:106.8019},
+            {id:'kemang',name:'Kemang',score:1950,revenue:2800,wait:12,lat:-6.2615,lng:106.8166}
+        ];
+        var driverPosition = null;
+        var history = [];
+        var userLevel = 1;
+
+        window.onload = function() {
+            try {
+                var saved = localStorage.getItem('dz_phone');
+                var savedLevel = localStorage.getItem('dz_level');
+                if (savedLevel) userLevel = parseInt(savedLevel);
+                if (saved) { showScreen('mainScreen'); }
+                updateBadge();
+            } catch(e) {}
+        };
+
+        function doLogin() {
+            var phone = document.getElementById('phoneInput').value;
+            if (phone.length < 8) { alert('Too short'); return; }
+            try { localStorage.setItem('dz_phone', phone); } catch(e) {}
+            showScreen('mainScreen');
+        }
+
+        function doSkip() { showScreen('mainScreen'); }
+
+        function showScreen(screenId) {
+            var screens = ['mainScreen','pricingScreen','historyScreen','settingsScreen'];
+            for (var i=0; i<screens.length; i++) document.getElementById(screens[i]).style.display = 'none';
+            document.getElementById(screenId).style.display = 'block';
+            var buttons = document.querySelectorAll('.nav-button');
+            for (var i=0; i<buttons.length; i++) buttons[i].classList.remove('active');
+            if (screenId==='mainScreen') buttons[0].classList.add('active');
+            else if (screenId==='pricingScreen') buttons[1].classList.add('active');
+            else if (screenId==='historyScreen') { buttons[2].classList.add('active'); renderHistory(); }
+            else if (screenId==='settingsScreen') { buttons[3].classList.add('active'); updatePlanDisplay(); }
+        }
+
+        function calculateDistance(lat1, lng1, lat2, lng2) {
+            var R = 6371;
+            var dLat = (lat2-lat1)*Math.PI/180;
+            var dLng = (lng2-lng1)*Math.PI/180;
+            var a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);
+            var c = 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return Math.round(R*c*10)/10;
+        }
+
+        function activateGeo() {
+            document.getElementById('geoStatus').textContent = 'Locating...';
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(pos) {
+                        driverPosition = {lat:pos.coords.latitude, lng:pos.coords.longitude};
+                        document.getElementById('geoStatus').textContent = 'GPS Active';
+                        document.getElementById('geoInfo').textContent = 'Lat:'+driverPosition.lat.toFixed(2)+', Lng:'+driverPosition.lng.toFixed(2);
+                        displayClosestZones();
+                    },
+                    function() {
+                        document.getElementById('geoStatus').textContent = 'GPS Denied';
+                        document.getElementById('geoInfo').textContent = 'Using default location';
+                        driverPosition = {lat:-6.2088, lng:106.8456};
+                        displayClosestZones();
+                    },
+                    {timeout:10000}
+                );
+            } else {
+                document.getElementById('geoStatus').textContent = 'Not Supported';
+                driverPosition = {lat:-6.2088, lng:106.8456};
+                displayClosestZones();
+            }
+        }
+
+        function displayClosestZones() {
+            if (!driverPosition) { document.getElementById('zonesList').innerHTML='<p class="loading">Waiting...</p>'; return; }
+            var zonesWithDist = zones.map(function(z) {
+                return Object.assign({}, z, {distance:calculateDistance(driverPosition.lat,driverPosition.lng,z.lat,z.lng)});
+            });
+            zonesWithDist.sort(function(a,b) { return a.distance-b.distance; });
+            var html = '';
+            zonesWithDist.slice(0,3).forEach(function(z,i) {
+                var medal = i===0?'&#129351;':i===1?'&#129352;':'&#129353;';
+                html += '<div class="zone-item"><h3>'+medal+' '+(i+1)+'. '+z.name+'</h3>';
+                html += '<p>'+z.distance+' km away</p><p>Score: '+z.score+' pts</p>';
+                html += '<p>'+z.revenue+' IDR | '+z.wait+' min wait</p>';
+                html += '<a href="https://www.google.com/maps/search/'+encodeURIComponent(z.name+', Jakarta')+'" target="_blank" class="nav-btn">NAVIGATE</a></div>';
+            });
+            document.getElementById('zonesList').innerHTML = html;
+        }
+
+        function refreshZones() { activateGeo(); }
+        function upgrade(lvl) { userLevel=lvl; try{localStorage.setItem('dz_level',lvl.toString());}catch(e){} updateBadge(); alert('Upgraded!'); showScreen('mainScreen'); }
+        function updateBadge() { var b=document.getElementById('userBadge'); if(b) b.textContent=userLevel===1?'FREE':userLevel===2?'PREMIUM':'PRO'; }
+        function updatePlanDisplay() { var p=document.getElementById('currentPlan'); if(p) p.textContent=userLevel===1?'Free':userLevel===2?'Premium':'PRO'; }
+        function renderHistory() { var c=document.getElementById('historyList'); if(!c)return; if(history.length===0){c.innerHTML='<p style="color:#888;text-align:center;padding:40px;">No history</p>';return;} var h=''; for(var i=0;i<history.length&&i<50;i++){var t=history[i];h+='<div class="zone-item"><b>'+t.name+'</b><br><small>'+t.date+'</small></div>';} c.innerHTML=h; }
+        function clearData() { if(confirm('Clear all data?')){try{localStorage.removeItem('dz_phone');localStorage.removeItem('dz_level');localStorage.removeItem('dz_history');}catch(e){}history=[];userLevel=1;location.reload();} }
+    </script>
+</body>
+</html>
+
