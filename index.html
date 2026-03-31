@@ -8,25 +8,19 @@
 body{background:#0F0F0F;color:white;font-family:Arial,sans-serif;margin:0;padding:0}
 *{box-sizing:border-box}
 .screen{display:none;padding:20px;padding-bottom:100px;min-height:100vh}
-.login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;text-align:center}
-.logo-box{width:80px;height:80px;margin:0 auto 15px}
-.coin{animation:floatUp 2s infinite}
-.coin:nth-child(2){animation-delay:0.3s}
-.coin:nth-child(3){animation-delay:0.6s}
-@keyframes floatUp{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(-30px)}}
-h1{color:#00B14F;font-size:24px;margin:10px 0}
-.subtitle{color:#888;margin-bottom:30px;font-size:14px}
-.input-box{width:100%;max-width:280px;padding:14px;border-radius:10px;border:2px solid #333;background:#1A1A1A;color:white;font-size:16px;margin-bottom:12px}
+.screen.show{display:block}
+.login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.logo{font-size:60px;margin-bottom:20px}
+h1{color:#00B14F;font-size:24px;margin-bottom:10px;text-align:center}
+.subtitle{color:#888;margin-bottom:30px;text-align:center}
+input{width:100%;max-width:280px;padding:14px;border-radius:10px;border:2px solid #333;background:#1A1A1A;color:white;font-size:16px;margin-bottom:12px}
 .btn{width:100%;max-width:280px;padding:14px;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer;border:none;margin-bottom:10px}
 .btn1{background:#00B14F;color:white}
 .btn2{background:#252525;color:white;border:2px solid #333}
 .btn3{background:linear-gradient(135deg,#667eea,#764ba2);color:white}
 .btn4{background:linear-gradient(135deg,#f093fb,#f5576c);color:white}
 .header{position:fixed;top:10px;left:10px;right:10px;background:#1A1A1A;padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border:1px solid #333}
-.header-left{display:flex;align-items:center;gap:10px}
-.header-logo{width:35px;height:35px}
-.header-title{font-size:16px;font-weight:bold;color:#00B14F}
-.badge{padding:5px 12px;border-radius:15px;font-size:11px;font-weight:bold;background:#333;color:#888}
+.badge{padding:5px12px;border-radius:15px;font-size:11px;font-weight:bold;background:#333;color:#888}
 .nav{position:fixed;bottom:0;left:0;right:0;background:#1A1A1A;padding:10px;display:flex;justify-content:space-around;border-top:1px solid #333;z-index:1000}
 .nav button{background:none;border:none;color:#888;font-size:11px;cursor:pointer;padding:8px}
 .nav button.active{color:#00B14F}
@@ -39,64 +33,25 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 .price{font-size:24px;font-weight:bold;color:#00B14F;margin:10px 0}
 .nav-btn{display:inline-block;padding:10px 18px;background:#00B14F;color:white;text-decoration:none;border-radius:8px;font-weight:bold;font-size:13px;margin-top:8px}
 .loading{text-align:center;padding:20px;color:#666}
-.spot-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.spot-rank{font-size:22px;margin-right:8px}
-.spot-name{font-weight:bold;font-size:15px}
-.topspot-badge{background:linear-gradient(135deg,#f093fb,#f5576c);color:white;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:bold}
-.spot-meta{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.distance-badge{background:#252525;color:#888;padding:3px 8px;border-radius:10px;font-size:11px}
-.profit-rank{background:#00C853;color:white;padding:3px 8px;border-radius:10px;font-size:11px;font-weight:bold}
-.spot-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
-.stat-item{text-align:center;padding:8px;background:#252525;border-radius:8px}
-.stat-icon{font-size:16px;margin-bottom:2px}
-.stat-value{font-weight:bold;font-size:12px}
-.stat-label{font-size:9px;color:#666}
-.efficiency-badge{background:linear-gradient(135deg,#00B14F,#00C853);color:white;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:bold;display:inline-block;margin-bottom:10px}
-.profit-section{display:flex;align-items:center;gap:6px;padding:8px;background:rgba(0,200,83,0.1);border-radius:8px;border:1px solid rgba(0,200,83,0.3);margin-bottom:10px}
-.profit-indicator{width:6px;height:6px;border-radius:50%;background:#00C853}
-.profit-text{font-size:12px;font-weight:bold;color:#00C853}
-.sort-options{display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap}
-.sort-btn{background:#252525;color:#888;border:1px solid #333;padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer}
-.sort-btn.active{background:#00B14F;color:white;border-color:#00B14F}
-.page-title{font-size:20px;font-weight:bold;margin-bottom:15px;color:#00B14F}
-.region-filter{display:flex;gap:6px;margin-bottom:15px;flex-wrap:wrap;overflow-x:auto;padding-bottom:10px}
-.region-btn{background:#252525;color:#888;border:1px solid #333;padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer;white-space:nowrap}
-.region-btn.active{background:#00B14F;color:white;border-color:#00B14F}
 </style>
 </head>
 <body>
 
 <!-- LOGIN -->
 <div id="login" class="login">
-<div class="logo-box">
-<svg class="logo-svg" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-<rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/>
-<rect x="25" y="32" width="35" height="16" rx="4" fill="#00C853"/>
-<circle cx="25" cy="65" r="8" fill="#1A1A1A"/>
-<circle cx="55" cy="65" r="8" fill="#1A1A1A"/>
-<circle class="coin" cx="75" cy="25" r="8" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
-<text class="coin" x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text>
-<circle class="coin" cx="83" cy="15" r="6" fill="#FFD700" stroke="#FFA500" stroke-width="1.5"/>
-<text class="coin" x="83" y="19" font-size="8" font-weight="bold" fill="#000" text-anchor="middle">$</text>
-<circle class="coin" cx="88" cy="7" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-<text class="coin" x="88" y="10" font-size="6" font-weight="bold" fill="#000" text-anchor="middle">$</text>
-</svg>
-</div>
+<div class="logo">🚕💹</div>
 <h1>DriverZone Pro</h1>
-<p class="subtitle">Find Hot Spots, Earn More</p>
-<input type="tel" id="phone" class="input-box" placeholder="812 3456 7890">
-<button class="btn btn1" id="btnContinue">🚀 Continue</button>
-<button class="btn btn2" id="btnSkip">Skip Login</button>
+<p class="subtitle">Find Hot Zones, Earn More</p>
+<input type="tel" id="phone" placeholder="812 3456 7890">
+<button class="btn btn1" onclick="go()">🚀 Continue</button>
+<button class="btn btn2" onclick="skip()">Skip</button>
 </div>
 
 <!-- MAIN -->
 <div id="main" class="screen">
 <div class="header">
-<div class="header-left">
-<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
-<span class="header-title">DriverZone Pro</span>
-</div>
 <span id="badge" class="badge">FREE</span>
+<button onclick="refresh()" style="background:none;border:none;color:white;font-size:18px;">🔄</button>
 </div>
 <div class="map">
 <div class="map-icon">📍</div>
@@ -104,29 +59,8 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 <p id="gpsInfo" style="color:#888;font-size:12px;margin:10px 0;">Click to enable</p>
 <button class="btn btn1" onclick="gps()" style="max-width:180px;">Enable GPS</button>
 </div>
-
-<h2 class="page-title">📍 Nearby Spots</h2>
-
-<!-- Region Filter -->
-<div class="region-filter">
-<button class="region-btn active" onclick="setRegion('all')">🗺️ All</button>
-<button class="region-btn" onclick="setRegion('pusat')">Pusat</button>
-<button class="region-btn" onclick="setRegion('selatan')">Selatan</button>
-<button class="region-btn" onclick="setRegion('barat')">Barat</button>
-<button class="region-btn" onclick="setRegion('timur')">Timur</button>
-<button class="region-btn" onclick="setRegion('utara')">Utara</button>
-<button class="region-btn" onclick="setRegion('jabodetabek')">Jabodetabek</button>
-</div>
-
-<div class="sort-options">
-<button class="sort-btn active" onclick="setSort('distance')">📍 Distance</button>
-<button class="sort-btn" onclick="setSort('profit')">💰 Profit</button>
-<button class="sort-btn" onclick="setSort('efficiency')">⚡ IDR/km</button>
-</div>
-
-<p id="spotCount" style="color:#666;font-size:12px;margin-bottom:15px;"></p>
-<div id="spots"><p class="loading">Loading...</p></div>
-
+<h2 style="font-size:18px;margin-bottom:15px;">📍 Nearby Zones</h2>
+<div id="zones"><p class="loading">Loading...</p></div>
 <div class="nav">
 <button class="active" onclick="show('main')"><span>🗺️</span>Map</button>
 <button onclick="show('plans')"><span>💎</span>Plans</button>
@@ -137,39 +71,29 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 
 <!-- PLANS -->
 <div id="plans" class="screen">
-<div class="header">
-<div class="header-left">
-<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
-<span class="header-title">DriverZone Pro</span>
-</div>
-<span class="badge">Plans</span>
-</div>
-<div style="padding-top:80px;">
-<h2 class="page-title">💎 Choose Plan</h2>
+<div class="header"><span style="color:white;font-weight:bold;">Plans</span></div>
+<div style="padding-top:70px;">
 <div class="card">
 <div class="card-title">🆓 FREE</div>
 <div class="price">0 IDR</div>
-<p>✅ 3 nearest spots</p>
-<p>✅ Profitability ranking</p>
-<p>❌ Top Spots hidden</p>
+<p>✅ 3 nearest zones</p>
+<p>✅ Profit ranking</p>
 <button class="btn btn2" disabled>Current</button>
 </div>
 <div class="card" style="border-left-color:#667eea;">
 <div class="card-title">⭐ PRO</div>
 <div class="price">29k IDR/mo</div>
-<p>✅ 10 nearest spots</p>
-<p>✅ Detailed profitability</p>
-<p>❌ Top Spots hidden</p>
-<button class="btn btn3" onclick="up('pro')">Choose Pro</button>
+<p>✅ All zones (25km)</p>
+<p>✅ Detailed profit</p>
+<button class="btn btn3" onclick="up('pro')">Choose</button>
 </div>
 <div class="card" style="border-left-color:#f5576c;">
 <div class="card-title">👑 SUCCESS</div>
 <div class="price">79k IDR/mo</div>
-<p>✅ All spots (50km)</p>
-<p>✅ Top Spots UNLOCKED 🔥</p>
+<p>✅ All zones (50km)</p>
+<p>✅ Top Spots 🔥</p>
 <p>✅ Offline mode</p>
-<p>✅ Return home mode</p>
-<button class="btn btn4" onclick="up('success')">Choose Success</button>
+<button class="btn btn4" onclick="up('success')">Choose</button>
 </div>
 </div>
 <div class="nav">
@@ -182,17 +106,8 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 
 <!-- HISTORY -->
 <div id="history" class="screen">
-<div class="header">
-<div class="header-left">
-<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
-<span class="header-title">DriverZone Pro</span>
-</div>
-<span class="badge">History</span>
-</div>
-<div style="padding-top:80px;">
-<h2 class="page-title">📜 Trip History</h2>
-<div id="hist"><p class="loading">No history</p></div>
-</div>
+<div class="header"><span style="color:white;font-weight:bold;">History</span></div>
+<div id="hist" style="padding-top:70px;"><p class="loading">No history</p></div>
 <div class="nav">
 <button onclick="show('main')"><span>🗺️</span>Map</button>
 <button onclick="show('plans')"><span>💎</span>Plans</button>
@@ -203,24 +118,22 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 
 <!-- SETTINGS -->
 <div id="settings" class="screen">
-<div class="header">
-<div class="header-left">
-<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
-<span class="header-title">DriverZone Pro</span>
-</div>
-<span class="badge">Settings</span>
-</div>
-<div style="padding-top:80px;">
-<h2 class="page-title">⚙️ Settings</h2>
+<div class="header"><span style="color:white;font-weight:bold;">Settings</span></div>
+<div style="padding-top:70px;">
 <div class="card">
 <div class="card-title">👤 Account</div>
 <p>Plan: <span id="plan" style="color:#00B14F;">FREE</span></p>
 <button class="btn btn1" onclick="show('plans')" style="max-width:180px;">Change</button>
 </div>
 <div class="card">
+<div class="card-title">🏠 Home</div>
+<p id="homeStatus" style="color:#888;">SUCCESS only</p>
+<button class="btn btn2" onclick="setHome()" id="homeBtn" style="max-width:180px;">Set</button>
+</div>
+<div class="card">
 <div class="card-title">📱 About</div>
-<p style="color:#888;">Version 2.0 - 80+ Spots</p>
-<button class="btn btn2" onclick="clear()" style="max-width:180px;margin-top:10px;">Clear Data</button>
+<p style="color:#888;">Version 1.0</p>
+<button class="btn btn2" onclick="clear()" style="max-width:180px;margin-top:10px;border-color:#FF3D57;color:#FF3D57;">Clear</button>
 </div>
 </div>
 <div class="nav">
@@ -232,86 +145,206 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 </div>
 
 <script>
-// ===== 80+ SPOTS - 10+ PER ARRONDISSEMENT =====
-var spots=[
-// JAKARTA PUSAT (12 spots)
-{name:'Sudirman Central',revenue:35000,wait:5,avgTrip:9,lat:-6.2088,lng:106.8456,top:true,region:'pusat'},
-{name:'Thamrin Plaza',revenue:32000,wait:6,avgTrip:8,lat:-6.1944,lng:106.8229,top:true,region:'pusat'},
-{name:'Kuningan Business',revenue:30000,wait:7,avgTrip:10,lat:-6.2297,lng:106.8303,top:true,region:'pusat'},
-{name:'Gambir Station',revenue:28000,wait:8,avgTrip:5,lat:-6.1751,lng:106.8272,top:false,region:'pusat'},
-{name:'Menteng',revenue:25000,wait:10,avgTrip:9,lat:-6.1944,lng:106.8303,top:false,region:'pusat'},
-{name:'Tanah Abang',revenue:27000,wait:9,avgTrip:7,lat:-6.1944,lng:106.8167,top:false,region:'pusat'},
-{name:'Monas',revenue:24000,wait:12,avgTrip:6,lat:-6.1751,lng:106.8272,top:false,region:'pusat'},
-{name:'Harmoni',revenue:23000,wait:10,avgTrip:7,lat:-6.1833,lng:106.8167,top:false,region:'pusat'},
-{name:'Pasar Baru',revenue:22000,wait:11,avgTrip:6,lat:-6.1667,lng:106.8333,top:false,region:'pusat'},
-{name:'Cempaka Putih',revenue:21000,wait:12,avgTrip:8,lat:-6.1667,lng:106.8667,top:false,region:'pusat'},
-{name:'Johar Baru',revenue:20000,wait:13,avgTrip:7,lat:-6.1833,lng:106.8500,top:false,region:'pusat'},
-{name:'Kemayoran',revenue:26000,wait:8,avgTrip:9,lat:-6.1667,lng:106.8500,top:false,region:'pusat'},
+// Zones data
+var zones=[
+{name:'Sudirman',score:2500,revenue:3000,wait:5,lat:-6.2088,lng:106.8456,top:true},
+{name:'Thamrin',score:2450,revenue:2800,wait:6,lat:-6.1944,lng:106.8229,top:true},
+{name:'Kuningan',score:2400,revenue:2700,wait:7,lat:-6.2297,lng:106.8303,top:true},
+{name:'Gambir',score:2300,revenue:2400,wait:8,lat:-6.1751,lng:106.8272,top:false},
+{name:'Senayan',score:2200,revenue:2300,wait:8,lat:-6.2253,lng:106.8019,top:false},
+{name:'Kemang',score:2000,revenue:2600,wait:12,lat:-6.2615,lng:106.8166,top:false},
+{name:'BSD',score:2400,revenue:2800,wait:7,lat:-6.3050,lng:106.6083,top:true},
+{name:'Bekasi',score:2100,revenue:2300,wait:10,lat:-6.2333,lng:106.9667,top:false},
+{name:'Depok',score:2200,revenue:2400,wait:9,lat:-6.4000,lng:106.8167,top:false},
+{name:'Airport',score:2500,revenue:4000,wait:25,lat:-6.1256,lng:106.6559,top:true}
+];
 
-// JAKARTA SELATAN (12 spots)
-{name:'Senayan',revenue:27000,wait:8,avgTrip:7,lat:-6.2253,lng:106.8019,top:false,region:'selatan'},
-{name:'Kemang',revenue:29000,wait:12,avgTrip:11,lat:-6.2615,lng:106.8166,top:false,region:'selatan'},
-{name:'Pondok Indah',revenue:28000,wait:10,avgTrip:8,lat:-6.2665,lng:106.7844,top:false,region:'selatan'},
-{name:'TB Simatupang',revenue:31000,wait:7,avgTrip:10,lat:-6.2892,lng:106.8203,top:false,region:'selatan'},
-{name:'Lebak Bulus',revenue:22000,wait:15,avgTrip:12,lat:-6.2836,lng:106.7794,top:false,region:'selatan'},
-{name:'Blok M',revenue:26000,wait:9,avgTrip:8,lat:-6.2444,lng:106.8019,top:false,region:'selatan'},
-{name:'Fatmawati',revenue:25000,wait:10,avgTrip:9,lat:-6.2750,lng:106.7900,top:false,region:'selatan'},
-{name:'Cilandak',revenue:24000,wait:11,avgTrip:10,lat:-6.2833,lng:106.8000,top:false,region:'selatan'},
-{name:'Pasar Minggu',revenue:23000,wait:12,avgTrip:11,lat:-6.2900,lng:106.8400,top:false,region:'selatan'},
-{name:'Jagakarsa',revenue:21000,wait:14,avgTrip:13,lat:-6.3167,lng:106.8333,top:false,region:'selatan'},
-{name:'Lenteng Agung',revenue:20000,wait:15,avgTrip:12,lat:-6.3000,lng:106.8500,top:false,region:'selatan'},
-{name:'Tebet',revenue:25000,wait:10,avgTrip:8,lat:-6.2333,lng:106.8500,top:false,region:'selatan'},
+var pos=null,level='free',hist=[];
 
-// JAKARTA BARAT (12 spots)
-{name:'Tanjung Duren',revenue:24000,wait:10,avgTrip:8,lat:-6.1889,lng:106.7803,top:false,region:'barat'},
-{name:'Grogol',revenue:23000,wait:12,avgTrip:7,lat:-6.1606,lng:106.7903,top:false,region:'barat'},
-{name:'Tomang',revenue:25000,wait:9,avgTrip:8,lat:-6.1753,lng:106.7903,top:false,region:'barat'},
-{name:'Slipi',revenue:26000,wait:8,avgTrip:9,lat:-6.1944,lng:106.7903,top:false,region:'barat'},
-{name:'Palmerah',revenue:24000,wait:10,avgTrip:8,lat:-6.2089,lng:106.7903,top:false,region:'barat'},
-{name:'Kebon Jeruk',revenue:23000,wait:11,avgTrip:9,lat:-6.2000,lng:106.7667,top:false,region:'barat'},
-{name:'Puri Indah',revenue:27000,wait:8,avgTrip:10,lat:-6.1833,lng:106.7500,top:false,region:'barat'},
-{name:'Kembangan',revenue:22000,wait:12,avgTrip:10,lat:-6.1667,lng:106.7500,top:false,region:'barat'},
-{name:'Cengkareng',revenue:21000,wait:13,avgTrip:11,lat:-6.1500,lng:106.7333,top:false,region:'barat'},
-{name:'Duri Kosambi',revenue:20000,wait:14,avgTrip:12,lat:-6.1333,lng:106.7500,top:false,region:'barat'},
-{name:'Kalideres',revenue:19000,wait:15,avgTrip:13,lat:-6.1333,lng:106.7167,top:false,region:'barat'},
-{name:'Pinangsia',revenue:22000,wait:11,avgTrip:7,lat:-6.1500,lng:106.8000,top:false,region:'barat'},
+// START - Show login immediately
+window.onload=function(){
+console.log('✅ App started');
+var saved=localStorage.getItem('dz_phone');
+var savedLevel=localStorage.getItem('dz_level');
+if(savedLevel)level=savedLevel;
+if(saved){show('main');setTimeout(gps,300);}
+else{document.getElementById('login').style.display='flex';}
+updateBadge();
+};
 
-// JAKARTA TIMUR (12 spots)
-{name:'Matraman',revenue:20000,wait:12,avgTrip:6,lat:-6.1944,lng:106.8556,top:false,region:'timur'},
-{name:'Jatinegara',revenue:21000,wait:10,avgTrip:7,lat:-6.2167,lng:106.8667,top:false,region:'timur'},
-{name:'Cawang',revenue:23000,wait:9,avgTrip:8,lat:-6.2556,lng:106.8667,top:false,region:'timur'},
-{name:'Cililitan',revenue:21000,wait:11,avgTrip:9,lat:-6.2722,lng:106.8667,top:false,region:'timur'},
-{name:'Pasar Rebo',revenue:19000,wait:15,avgTrip:11,lat:-6.2889,lng:106.8667,top:false,region:'timur'},
-{name:'Cipayung',revenue:18000,wait:16,avgTrip:12,lat:-6.3000,lng:106.8833,top:false,region:'timur'},
-{name:'Lubang Buaya',revenue:20000,wait:14,avgTrip:10,lat:-6.3000,lng:106.8500,top:false,region:'timur'},
-{name:'Halim',revenue:22000,wait:12,avgTrip:9,lat:-6.2667,lng:106.8833,top:false,region:'timur'},
-{name:'Kramat Jati',revenue:21000,wait:11,avgTrip:8,lat:-6.2667,lng:106.8500,top:false,region:'timur'},
-{name:'Pulo Gadung',revenue:24000,wait:9,avgTrip:10,lat:-6.1833,lng:106.9000,top:false,region:'timur'},
-{name:'Rawamangun',revenue:23000,wait:10,avgTrip:9,lat:-6.1833,lng:106.8833,top:false,region:'timur'},
-{name:'Duren Sawit',revenue:22000,wait:11,avgTrip:10,lat:-6.2000,lng:106.9000,top:false,region:'timur'},
+// Navigation
+function show(id){
+document.getElementById('login').style.display='none';
+var screens=['main','plans','history','settings'];
+for(var i=0;i<screens.length;i++){document.getElementById(screens[i]).classList.remove('show');}
+document.getElementById(id).classList.add('show');
+var btns=document.querySelectorAll('.nav button');
+for(var i=0;i<btns.length;i++){btns[i].classList.remove('active');}
+if(id==='history'){renderHist();}
+if(id==='settings'){updatePlan();}
+}
 
-// JAKARTA UTARA (12 spots)
-{name:'Kelapa Gading',revenue:30000,wait:8,avgTrip:9,lat:-6.1583,lng:106.9097,top:false,region:'utara'},
-{name:'Pluit',revenue:26000,wait:10,avgTrip:10,lat:-6.1167,lng:106.8000,top:false,region:'utara'},
-{name:'Ancol',revenue:26000,wait:12,avgTrip:6,lat:-6.1222,lng:106.8444,top:false,region:'utara'},
-{name:'Tanjung Priok',revenue:21000,wait:15,avgTrip:8,lat:-6.1056,lng:106.8806,top:false,region:'utara'},
-{name:'Sunter',revenue:22000,wait:11,avgTrip:9,lat:-6.1333,lng:106.8667,top:false,region:'utara'},
-{name:'Pademangan',revenue:23000,wait:10,avgTrip:7,lat:-6.1333,lng:106.8333,top:false,region:'utara'},
-{name:'Penjaringan',revenue:21000,wait:12,avgTrip:8,lat:-6.1167,lng:106.8167,top:false,region:'utara'},
-{name:'Koja',revenue:20000,wait:13,avgTrip:9,lat:-6.1167,lng:106.8833,top:false,region:'utara'},
-{name:'Cilincing',revenue:19000,wait:14,avgTrip:11,lat:-6.1000,lng:106.9000,top:false,region:'utara'},
-{name:'Semper',revenue:18000,wait:15,avgTrip:12,lat:-6.1000,lng:106.8667,top:false,region:'utara'},
-{name:'Rorotan',revenue:17000,wait:16,avgTrip:13,lat:-6.0833,lng:106.8833,top:false,region:'utara'},
-{name:'Marunda',revenue:18000,wait:15,avgTrip:14,lat:-6.0833,lng:106.9000,top:false,region:'utara'},
+// Login
+function go(){
+var p=document.getElementById('phone').value;
+if(p.length<8){alert('Too short');return;}
+localStorage.setItem('dz_phone',p);
+show('main');
+setTimeout(gps,300);
+}
 
-// BODODETABEK (14 spots)
-{name:'BSD City',revenue:33000,wait:7,avgTrip:12,lat:-6.3050,lng:106.6083,top:true,region:'jabodetabek'},
-{name:'Alam Sutera',revenue:31000,wait:8,avgTrip:11,lat:-6.2900,lng:106.6400,top:false,region:'jabodetabek'},
-{name:'Karawaci',revenue:28000,wait:9,avgTrip:13,lat:-6.1667,lng:106.6167,top:false,region:'jabodetabek'},
-{name:'Bintaro',revenue:30000,wait:8,avgTrip:14,lat:-6.2667,lng:106.7500,top:false,region:'jabodetabek'},
-{name:'Bekasi Barat',revenue:24000,wait:10,avgTrip:14,lat:-6.2333,lng:106.9667,top:false,region:'jabodetabek'},
-{name:'Pekayon',revenue:26000,wait:9,avgTrip:12,lat:-6.2500,lng:106.9833,top:false,region:'jabodetabek'},
-{name:'Depok Center',revenue:26000,wait:9,avgTrip:13,lat:-6.4000,lng:106.8167,top:false,region:'jabodetabek'},
-{name:'Margonda',revenue:28000,wait:8,avgTrip:11,lat:-6.3833,lng:106.8333,top:false,region:'jabodetabek'},
-{name:'Bogor Center',revenue:27000,wait:10,avgTrip:15,lat:-6.5950,lng:106.8167,top:false,region:'jabodetabek'},
-{name:'Sentul',revenue:29000,wait:8,avgTrip:18,lat:-6.5333,lng:106.8500,top:false,region:'j
+function skip(){
+show('main');
+setTimeout(gps,300);
+}
+
+// GPS
+function gps(){
+document.getElementById('gps').textContent='📍 Locating...';
+if(navigator.geolocation){
+navigator.geolocation.getCurrentPosition(
+function(p){
+pos={lat:p.coords.latitude,lng:p.coords.longitude};
+document.getElementById('gps').textContent='✅ GPS Active';
+document.getElementById('gpsInfo').textContent='Lat: '+pos.lat.toFixed(2)+', Lng: '+pos.lng.toFixed(2);
+loadZones();
+},
+function(){
+document.getElementById('gps').textContent='❌ Denied';
+document.getElementById('gpsInfo').textContent='Using Jakarta';
+pos={lat:-6.2088,lng:106.8456};
+loadZones();
+},{timeout:8000}
+);
+}else{
+document.getElementById('gps').textContent='❌ Not supported';
+pos={lat:-6.2088,lng:106.8456};
+loadZones();
+}
+}
+
+// Distance
+function dist(lat1,lng1,lat2,lng2){
+var R=6371,dLat=(lat2-lat1)*Math.PI/180,dLng=(lng2-lng1)*Math.PI/180;
+var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);
+return Math.round(R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a))*10)/10;
+}
+
+// Profit
+function profit(rev,d,wait){
+var net=rev-(d*2*1000)-(wait*500);
+if(net>=1500)return{lbl:'🟢 Excellent',net:net};
+if(net>=500)return{lbl:'🟡 Good',net:net};
+return{lbl:'🔴 Average',net:net};
+}
+
+// Load zones
+function loadZones(){
+if(!pos){document.getElementById('zones').innerHTML='<p class="loading">Waiting...</p>';return;}
+var r=level==='free'?10:level==='pro'?25:50;
+var max=level==='free'?3:999;
+var withDist=zones.map(function(z){
+var d=dist(pos.lat,pos.lng,z.lat,z.lng);
+var p=profit(z.revenue,d,z.wait);
+return{name:z.name,score:z.score,revenue:z.revenue,wait:z.wait,distance:d,profit:p,top:z.top};
+});
+var filtered=withDist.filter(function(z){return z.distance<=r&&(level==='success'||!z.top);});
+filtered.sort(function(a,b){return a.distance-b.distance;});
+var byProfit=filtered.slice().sort(function(a,b){return b.profit.net-a.profit.net});
+byProfit.forEach(function(z,i){z.rank=i+1;});
+var display=filtered.slice(0,max);
+var html='';
+if(display.length===0){html='<p class="loading">No zones</p>';}
+else{
+display.forEach(function(z,i){
+var medal=z.rank===1?'🥇':z.rank===2?'🥈':z.rank===3?'🥉':'';
+var top=z.top?'<span style="background:linear-gradient(135deg,#f093fb,#f5576c);color:white;padding:3px8px;border-radius:10px;font-size:10px;">🔥 TOP</span>':'';
+var border=z.rank===1?'#00C853':'#00B14F';
+html+='<div class="card" style="border-left-color:'+border+'" onclick="nav(\''+z.name+'\')">';
+html+='<div style="display:flex;justify-content:space-between;margin-bottom:8px;">';
+html+='<span style="font-size:20px;">'+medal+'</span><span style="font-weight:bold;">'+(i+1)+'. '+z.name+'</span>'+top;
+html+='</div>';
+html+='<p>📍 '+z.distance+' km | 💰 '+z.revenue+' IDR | ⏱️ '+z.wait+'m</p>';
+html+='<p style="color:'+z.profit.lbl.indexOf('Excellent')>-1?'#00C853':z.profit.lbl.indexOf('Good')>-1?'#FFB300':'#FF3D57';
+html+=';">'+z.profit.lbl+' (net: '+z.profit.net+' IDR)</p>';
+html+='<a class="nav-btn" href="https://www.google.com/maps/search/'+encodeURIComponent(z.name)+',Jakarta" target="_blank">🧭 Navigate</a>';
+html+='</div>';
+});
+}
+document.getElementById('zones').innerHTML=html;
+}
+
+function nav(name){
+hist.unshift({name:name,date:new Date().toLocaleString()});
+if(hist.length>50)hist=hist.slice(0,50);
+localStorage.setItem('dz_history',JSON.stringify(hist));
+window.open('https://www.google.com/maps/search/'+encodeURIComponent(name)+',Jakarta','_blank');
+}
+
+function refresh(){gps();}
+
+// Upgrade
+function up(lvl){
+level=lvl;
+localStorage.setItem('dz_level',lvl);
+updateBadge();
+alert('Upgraded to '+lvl.toUpperCase()+'!');
+show('main');
+}
+
+function updateBadge(){
+var b=document.getElementById('badge');
+if(level==='free'){b.textContent='🆓 FREE';}
+else if(level==='pro'){b.textContent='⭐ PRO';b.style.background='rgba(102,126,234,0.2)';b.style.color='#a78bfa';}
+else{b.textContent='👑 SUCCESS';b.style.background='rgba(240,147,251,0.2)';b.style.color='#f9a8d4';}
+}
+
+function updatePlan(){
+document.getElementById('plan').textContent=level.toUpperCase();
+var btn=document.getElementById('homeBtn');
+var status=document.getElementById('homeStatus');
+if(level==='success'){
+btn.textContent='🏠 Set Home';btn.className='btn btn1';
+status.textContent='Active';status.style.color='#00C853';
+}else{
+btn.textContent='Upgrade';btn.className='btn btn2';
+status.textContent='SUCCESS only';status.style.color='#888';
+}
+}
+
+function setHome(){
+if(level!=='success'){show('plans');return;}
+if(navigator.geolocation){
+navigator.geolocation.getCurrentPosition(
+function(p){
+var h={lat:p.coords.latitude,lng:p.coords.longitude};
+localStorage.setItem('dz_home',JSON.stringify(h));
+alert('Home saved!');
+},
+function(){alert('Error');}
+);
+}
+}
+
+function renderHist(){
+var c=document.getElementById('hist');
+if(hist.length===0){c.innerHTML='<p class="loading">No history</p>';return;}
+var h='';
+for(var i=0;i<hist.length&&i<50;i++){
+h+='<div class="card"><div style="font-weight:bold;">'+hist[i].name+'</div><p style="font-size:11px;">'+hist[i].date+'</p></div>';
+}
+c.innerHTML=h;
+}
+
+function clear(){
+if(confirm('Clear all?')){
+localStorage.removeItem('dz_phone');
+localStorage.removeItem('dz_level');
+localStorage.removeItem('dz_history');
+location.reload();
+}
+}
+</script>
+</body>
+</html>
+
