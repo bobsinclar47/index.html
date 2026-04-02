@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -19,8 +34,6 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 .btn{width:100%;max-width:320px;padding:16px 24px;border-radius:12px;font-weight:bold;font-size:16px;cursor:pointer;margin-bottom:12px;display:block;text-align:center}
 .btn1{background:#00B14F;color:white;border:none}
 .btn2{background:#252525;color:white;border:2px solid #333}
-.btn3{background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none}
-.btn4{background:linear-gradient(135deg,#f093fb,#f5576c);color:white;border:none}
 .btn-whatsapp{background:#25D366;color:white;border:none}
 .header{position:fixed;top:10px;left:10px;right:10px;background:#1A1A1A;padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;z-index:1000;border:1px solid #333}
 .header-left{display:flex;align-items:center;gap:10px}
@@ -35,6 +48,542 @@ h1{color:#00B14F;font-size:24px;margin:10px 0}
 .map-icon{font-size:40px;margin-bottom:10px}
 .card{background:#1A1A1A;border-radius:12px;padding:15px;margin-bottom:10px;border-left:4px solid #00B14F}
 .card-title{font-size:16px;font-weight:bold;margin-bottom:8px}
+.card p{color:#888;font-size:13px;margin:5px 0}
+.price{font-size:24px;font-weight:bold;color:#00B14F;margin:10px 0}
+.nav-btn{display:block;padding:12px 24px;background:#00B14F;color:white;text-decoration:none;border-radius:10px;font-weight:bold;font-size:14px;margin-top:10px;text-align:center}
+.loading{text-align:center;padding:20px;color:#666}
+.spot-card{background:#1A1A1A;border-radius:12px;padding:15px;margin-bottom:12px;border-left:4px solid #00B14F;position:relative}
+.spot-card.top-profit{border-left-color:#00C853}
+.spot-title{font-size:16px;font-weight:bold;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.spot-info{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.info-badge{background:#252525;padding:4px 8px;border-radius:8px;font-size:11px}
+.stats-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.stat-box{background:#252525;padding:10px;border-radius:8px;flex:1;min-width:70px;text-align:center}
+.stat-icon{font-size:18px;margin-bottom:4px}
+.stat-val{font-weight:bold;font-size:13px}
+.stat-lbl{font-size:9px;color:#888}
+.profit-box{background:rgba(0,200,83,0.1);padding:8px;border-radius:8px;border:1px solid rgba(0,200,83,0.3);margin-bottom:10px}
+.profit-text{color:#00C853;font-size:12px;font-weight:bold}
+.eff-badge{background:linear-gradient(135deg,#00B14F,#00C853);color:white;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:bold;display:inline-block;margin-bottom:10px}
+.top-badge{background:linear-gradient(135deg,#f093fb,#f5576c);color:white;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:bold}
+.peak-badge{background:#FF6B35;color:white;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:bold}
+.motor-badge{background:#FF6B35;color:white;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:bold}
+.car-badge{background:#4ECDC4;color:white;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:bold}
+.both-badge{background:#45B7D1;color:white;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:bold}
+.sort-options{display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap}
+.sort-btn{background:#252525;color:#888;border:1px solid #333;padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer}
+.sort-btn.active{background:#00B14F;color:white;border-color:#00B14F}
+.page-title{font-size:20px;font-weight:bold;margin-bottom:15px;color:#00B14F}
+.region-filter{display:flex;gap:6px;margin-bottom:15px;flex-wrap:wrap;overflow-x:auto;padding-bottom:10px}
+.region-btn{background:#252525;color:#888;border:1px solid #333;padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer;white-space:nowrap}
+.region-btn.active{background:#00B14F;color:white;border-color:#00B14F}
+.success-msg{background:rgba(0,200,83,0.2);border:1px solid #00C853;padding:10px;border-radius:8px;margin:10px 0;color:#00C853}
+.error-msg{background:rgba(255,61,87,0.2);border:1px solid #FF3D57;padding:10px;border-radius:8px;margin:10px 0;color:#FF3D57}
+.locked-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:12px;cursor:pointer;z-index:10}
+.lock-icon{font-size:36px;margin-bottom:8px}
+.lock-text{color:white;font-weight:bold;margin-bottom:5px;font-size:13px;text-align:center;padding:0 15px}
+.lock-sub{color:#888;font-size:11px;margin-bottom:10px;text-align:center;padding:0 15px}
+.lock-btn{background:#00B14F;color:white;padding:8px 20px;border-radius:8px;font-weight:bold;font-size:13px}
+.price-btn{padding:8px 16px;border-radius:20px;border:2px solid #333;background:#252525;color:#888;cursor:pointer;font-size:12px}
+.price-btn.active{background:#00B14F;color:white;border-color:#00B14F}
+.price-btn.cheap{border-color:#00C853}
+.price-btn.medium{border-color:#FFB300}
+.price-btn.expensive{border-color:#FF3D57}
+.place-card{background:#1A1A1A;border-radius:12px;padding:15px;margin-bottom:12px;border-left:4px solid #00B14F;position:relative}
+.place-card.cheap{border-left-color:#00C853}
+.place-card.medium{border-left-color:#FFB300}
+.place-card.expensive{border-left-color:#FF3D57}
+.place-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.place-name{font-weight:bold;font-size:15px}
+.place-price{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:bold}
+.place-cheap{background:#00C853;color:white}
+.place-medium{background:#FFB300;color:black}
+.place-expensive{background:#FF3D57;color:white}
+.place-info{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.place-tag{background:#252525;padding:4px 8px;border-radius:8px;font-size:11px}
+.place-rating{color:#FFB300}
+.place-features{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.feature-tag{background:rgba(0,177,79,0.2);color:#00B14F;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:bold}
+.favorite-btn{background:none;border:none;font-size:24px;cursor:pointer;position:absolute;top:10px;right:10px;z-index:20}
+.favorite-btn.active{color:#FF3D57}
+.favorite-btn.inactive{color:#666}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="login">
+<div class="logo-box">
+<svg viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><rect x="25" y="32" width="35" height="16" rx="4" fill="#00C853"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle class="coin" cx="75" cy="25" r="8" fill="#FFD700" stroke="#FFA500" stroke-width="2"/><text class="coin" x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text><circle class="coin" cx="83" cy="15" r="6" fill="#FFD700" stroke="#FFA500" stroke-width="1.5"/><text class="coin" x="83" y="19" font-size="8" font-weight="bold" fill="#000" text-anchor="middle">$</text><circle class="coin" cx="88" cy="7" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/><text class="coin" x="88" y="10" font-size="6" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
+</div>
+<h1>DriverZone Pro</h1>
+<p class="subtitle">Find Hot Spots, Earn More</p>
+<input type="tel" id="phone" class="input-box" placeholder="812 3456 7890">
+<button class="btn btn1" id="btnContinue">🚀 Continue</button>
+<button class="btn btn2" id="btnSkip">Skip Login</button>
+</div>
+
+<!-- MAIN -->
+<div id="main" class="screen">
+<div class="header">
+<div class="header-left">
+<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
+<span class="header-title">DriverZone Pro</span>
+</div>
+<span id="badge" class="badge">FREE</span>
+</div>
+<div class="map">
+<div class="map-icon">📍</div>
+<div id="gps">GPS Status</div>
+<p id="gpsInfo" style="color:#888;font-size:12px;margin:10px 0;">Click to enable</p>
+<button class="btn btn1" onclick="gps()" style="max-width:200px;">Enable GPS</button>
+</div>
+<h2 class="page-title">📍 Nearby Spots</h2>
+<div class="region-filter">
+<button class="region-btn active" onclick="setRegion('all')">🗺️ All</button>
+<button class="region-btn" onclick="setRegion('pusat')">Pusat</button>
+<button class="region-btn" onclick="setRegion('selatan')">Selatan</button>
+<button class="region-btn" onclick="setRegion('barat')">Barat</button>
+<button class="region-btn" onclick="setRegion('timur')">Timur</button>
+<button class="region-btn" onclick="setRegion('utara')">Utara</button>
+<button class="region-btn" onclick="setRegion('jabodetabek')">Jabodetabek</button>
+</div>
+<div class="sort-options">
+<button class="sort-btn active" onclick="setSort('distance')">📍 Distance</button>
+<button class="sort-btn" onclick="setSort('profit')">💰 Profit</button>
+<button class="sort-btn" onclick="setSort('efficiency')">⚡ IDR/km</button>
+<button class="sort-btn" onclick="setSort('hourly')">🕐 IDR/hour</button>
+</div>
+<p id="spotCount" style="color:#666;font-size:12px;margin-bottom:15px;"></p>
+<div id="spots"><p class="loading">Loading...</p></div>
+<div class="nav">
+<button class="active" onclick="show('main')"><span>🗺️</span>Spots</button>
+<button onclick="show('foodSleep')"><span>🍜</span>Manger/Dormir</button>
+<button onclick="show('favorites')"><span>⭐</span>Favoris</button>
+<button onclick="show('plans')"><span>💎</span>Plans</button>
+<button onclick="show('settings')"><span>⚙️</span>Settings</button>
+</div>
+</div>
+
+<!-- FOOD & SLEEP -->
+<div id="foodSleep" class="screen">
+<div class="header">
+<div class="header-left">
+<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
+<span class="header-title">DriverZone Pro</span>
+</div>
+</div>
+<div style="padding-top:80px;">
+<div class="sort-options" style="justify-content:center;margin-bottom:20px;">
+<button class="sort-btn active" onclick="showTab('food')">🍜 Manger</button>
+<button class="sort-btn" onclick="showTab('sleep')">🏨 Dormir</button>
+</div>
+<div id="foodSection">
+<h2 class="page-title">🍜 Où Manger ?</h2>
+<div class="price-filter" style="display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap;">
+<button class="price-btn cheap active" onclick="filterPrice('food', 'all')">🍴 Tous</button>
+<button class="price-btn cheap" onclick="filterPrice('food', 'cheap')">💚 Rp 10-25k</button>
+<button class="price-btn medium" onclick="filterPrice('food', 'medium')">💛 Rp 25-50k</button>
+<button class="price-btn expensive" onclick="filterPrice('food', 'expensive')">❤️ >50k</button>
+</div>
+<div id="foodList"><p class="loading">Chargement...</p></div>
+</div>
+<div id="sleepSection" style="display:none;">
+<h2 class="page-title">🏨 Où Dormir ?</h2>
+<div class="price-filter" style="display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap;">
+<button class="price-btn cheap active" onclick="filterPrice('sleep', 'all')">🛏️ Tous</button>
+<button class="price-btn cheap" onclick="filterPrice('sleep', 'cheap')">💚 Rp 50-150k</button>
+<button class="price-btn medium" onclick="filterPrice('sleep', 'medium')">💛 Rp 150-300k</button>
+<button class="price-btn expensive" onclick="filterPrice('sleep', 'expensive')">❤️ >300k</button>
+</div>
+<div id="sleepList"><p class="loading">Chargement...</p></div>
+</div>
+</div>
+<div class="nav">
+<button onclick="show('main')"><span>🗺️</span>Spots</button>
+<button class="active" onclick="show('foodSleep')"><span>🍜</span>Manger/Dormir</button>
+<button onclick="show('favorites')"><span>⭐</span>Favoris</button>
+<button onclick="show('plans')"><span>💎</span>Plans</button>
+<button onclick="show('settings')"><span>⚙️</span>Settings</button>
+</div>
+</div>
+
+<!-- FAVORITES -->
+<div id="favorites" class="screen">
+<div class="header">
+<div class="header-left">
+<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
+<span class="header-title">DriverZone Pro</span>
+</div>
+</div>
+<div style="padding-top:80px;">
+<h2 class="page-title">⭐ Mes Favoris</h2>
+<div class="sort-options" style="justify-content:center;margin-bottom:20px;">
+<button class="sort-btn active" onclick="showFavTab('spots')">📍 Spots</button>
+<button class="sort-btn" onclick="showFavTab('food')">🍜 Food</button>
+<button class="sort-btn" onclick="showFavTab('sleep')">🏨 Sleep</button>
+</div>
+<div id="favSpotsList"><p class="loading">Chargement...</p></div>
+<div id="favFoodList" style="display:none;"><p class="loading">Chargement...</p></div>
+<div id="favSleepList" style="display:none;"><p class="loading">Chargement...</p></div>
+</div>
+<div class="nav">
+<button onclick="show('main')"><span>🗺️</span>Spots</button>
+<button onclick="show('foodSleep')"><span>🍜</span>Manger/Dormir</button>
+<button class="active" onclick="show('favorites')"><span>⭐</span>Favoris</button>
+<button onclick="show('plans')"><span>💎</span>Plans</button>
+<button onclick="show('settings')"><span>⚙️</span>Settings</button>
+</div>
+</div>
+
+<!-- PLANS -->
+<div id="plans" class="screen">
+<div class="header">
+<div class="header-left">
+<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
+<span class="header-title">DriverZone Pro</span>
+</div>
+<span class="badge">Plans</span>
+</div>
+<div style="padding-top:80px;">
+<h2 class="page-title">💎 Choose Plan</h2>
+<div class="card">
+<div class="card-title">🆓 FREE</div>
+<div class="price">0 IDR</div>
+<p>✅ 3 visible spots</p>
+<button class="btn btn2" disabled>Current</button>
+</div>
+<div class="card" style="border-left-color:#667eea;">
+<div class="card-title">⭐ PRO</div>
+<div class="price">29.000 IDR/month</div>
+<p>✅ 10 visible spots</p>
+<button class="btn btn-whatsapp" onclick="buyViaWhatsApp('pro')">💬 Buy via WhatsApp</button>
+</div>
+<div class="card" style="border-left-color:#f5576c;">
+<div class="card-title">👑 SUCCESS</div>
+<div class="price">79.000 IDR/month</div>
+<p>✅ All spots + Top Spots 🔥</p>
+<button class="btn btn-whatsapp" onclick="buyViaWhatsApp('success')">💬 Buy via WhatsApp</button>
+</div>
+</div>
+<div class="nav">
+<button onclick="show('main')"><span>🗺️</span>Spots</button>
+<button onclick="show('foodSleep')"><span>🍜</span>Manger/Dormir</button>
+<button onclick="show('favorites')"><span>⭐</span>Favoris</button>
+<button class="active" onclick="show('plans')"><span>💎</span>Plans</button>
+<button onclick="show('settings')"><span>⚙️</span>Settings</button>
+</div>
+</div>
+
+<!-- SETTINGS -->
+<div id="settings" class="screen">
+<div class="header">
+<div class="header-left">
+<svg class="header-logo" viewBox="0 0 100 80"><rect x="10" y="45" width="60" height="20" rx="5" fill="#00B14F"/><circle cx="25" cy="65" r="8" fill="#1A1A1A"/><circle cx="55" cy="65" r="8" fill="#1A1A1A"/><circle cx="75" cy="25" r="8" fill="#FFD700"/><text x="75" y="30" font-size="10" font-weight="bold" fill="#000" text-anchor="middle">$</text></svg>
+<span class="header-title">DriverZone Pro</span>
+</div>
+<span class="badge">Settings</span>
+</div>
+<div style="padding-top:80px;">
+<h2 class="page-title">⚙️ Settings</h2>
+<div class="card">
+<div class="card-title">👤 Account</div>
+<p>Plan: <strong id="plan" style="color:#00B14F;">FREE</strong></p>
+<button class="btn btn1" onclick="show('plans')" style="max-width:200px;">Upgrade</button>
+</div>
+<div class="card">
+<div class="card-title">🎫 Activate Code</div>
+<input type="text" id="activationCode" class="input-box" placeholder="PRO-XXXX-XXXX" style="margin-bottom:10px;text-transform:uppercase;">
+<button class="btn btn1" onclick="activateCode()" style="max-width:200px;">Activate</button>
+<div id="activationMessage"></div>
+</div>
+<button class="btn btn2" onclick="clear()" style="max-width:200px;margin-top:10px;border-color:#FF3D57;color:#FF3D57;">Clear Data</button>
+</div>
+<div class="nav">
+<button onclick="show('main')"><span>🗺️</span>Spots</button>
+<button onclick="show('foodSleep')"><span>🍜</span>Manger/Dormir</button>
+<button onclick="show('favorites')"><span>⭐</span>Favoris</button>
+<button onclick="show('plans')"><span>💎</span>Plans</button>
+<button class="active" onclick="show('settings')"><span>⚙️</span>Settings</button>
+</div>
+</div>
+
+<script>
+// ===== DATA =====
+var spots=[
+{name:'Senayan City',revenue:38000,hourlyRevenue:114000,wait:6,avgTrip:9,peakMultiplier:1.5,lat:-6.2253,lng:106.8019,top:true,region:'selatan',vehicleType:'car'},
+{name:'Plaza Senayan',revenue:36000,hourlyRevenue:108000,wait:7,avgTrip:8,peakMultiplier:1.4,lat:-6.2244,lng:106.8031,top:true,region:'selatan',vehicleType:'car'},
+{name:'The Nest',revenue:35000,hourlyRevenue:105000,wait:5,avgTrip:8,peakMultiplier:1.4,lat:-6.2425,lng:106.8089,top:false,region:'selatan',vehicleType:'both'},
+{name:'Blok M',revenue:31000,hourlyRevenue:93000,wait:8,avgTrip:8,peakMultiplier:1.4,lat:-6.2469,lng:106.8025,top:false,region:'selatan',vehicleType:'both'},
+{name:'Sudirman',revenue:42000,hourlyRevenue:147000,wait:5,avgTrip:10,peakMultiplier:1.6,lat:-6.2088,lng:106.8456,top:true,region:'pusat',vehicleType:'car'},
+{name:'Thamrin',revenue:40000,hourlyRevenue:140000,wait:6,avgTrip:9,peakMultiplier:1.5,lat:-6.1944,lng:106.8229,top:true,region:'pusat',vehicleType:'car'},
+{name:'BSD City',revenue:36000,hourlyRevenue:108000,wait:7,avgTrip:11,peakMultiplier:1.5,lat:-6.3050,lng:106.6083,top:true,region:'jabodetabek',vehicleType:'car'},
+{name:'Kelapa Gading',revenue:35000,hourlyRevenue:105000,wait:8,avgTrip:9,peakMultiplier:1.5,lat:-6.1583,lng:106.9097,top:false,region:'utara',vehicleType:'car'},
+{name:'Kemang',revenue:36000,hourlyRevenue:108000,wait:8,avgTrip:10,peakMultiplier:1.5,lat:-6.2615,lng:106.8166,top:false,region:'selatan',vehicleType:'car'},
+{name:'Pondok Indah',revenue:34000,hourlyRevenue:102000,wait:8,avgTrip:9,peakMultiplier:1.4,lat:-6.2665,lng:106.7844,top:false,region:'selatan',vehicleType:'car'}
+];
+
+var foodPlaces=[
+{name:'Warteg Bu Siti',priceLevel:1,priceRange:'10-18k',distance:200,rating:4.6,reviews:256,lat:-6.2425,lng:106.8089,features:['halal','cheapest','fast']},
+{name:'Warung Padang',priceLevel:1,priceRange:'15-25k',distance:350,rating:4.5,reviews:128,lat:-6.2253,lng:106.8019,features:['halal','24h','parking']},
+{name:'Nasi Goreng',priceLevel:1,priceRange:'12-20k',distance:500,rating:4.3,reviews:89,lat:-6.2444,lng:106.8019,features:['halal','open-late']},
+{name:'Solaria',priceLevel:2,priceRange:'35-60k',distance:800,rating:4.4,reviews:342,lat:-6.2253,lng:106.8019,features:['ac','chinese']},
+{name:'HokBen',priceLevel:2,priceRange:'30-50k',distance:700,rating:4.3,reviews:278,lat:-6.2088,lng:106.8456,features:['ac','japanese']},
+{name:'KFC',priceLevel:2,priceRange:'25-45k',distance:600,rating:4.2,reviews:520,lat:-6.2444,lng:106.8019,features:['ac','fast-food']}
+];
+
+var sleepPlaces=[
+{name:'RedDoorz',priceLevel:1,priceRange:'80-120k',distance:400,rating:4.2,reviews:180,lat:-6.2253,lng:106.8019,features:['ac','wifi','parking']},
+{name:'OYO Kost',priceLevel:1,priceRange:'60-100k',distance:350,rating:4.0,reviews:95,lat:-6.2425,lng:106.8089,features:['wifi','cheap']},
+{name:'Penginapan',priceLevel:1,priceRange:'70-110k',distance:500,rating:4.1,reviews:120,lat:-6.2444,lng:106.8019,features:['ac','parking']},
+{name:'Favehotel',priceLevel:2,priceRange:'180-250k',distance:800,rating:4.5,reviews:520,lat:-6.2253,lng:106.8019,features:['ac','pool']},
+{name:'Ibis Budget',priceLevel:2,priceRange:'200-280k',distance:900,rating:4.4,reviews:680,lat:-6.2088,lng:106.8456,features:['ac','breakfast']}
+];
+
+var pos=null,level='free',hist=[],allSpots=[],displayedCount=0,currentSort='distance',currentRegion='all';
+var currentTab='food',currentPriceFilter='all',currentFavTab='spots';
+var validCodes={'PRO-2024-A1B2-C3D4':{plan:'pro',expires:'2025-12-31',used:false},'SUCCESS-2024-U1V2-W3X4':{plan:'success',expires:'2025-12-31',used:false}};
+var yourWhatsAppNumber='6287880319876';
+
+// ===== FAVORITES =====
+function getFavorites(type){try{return JSON.parse(localStorage.getItem('dz_fav_'+type)||'[]');}catch(e){return[];}}
+function saveFavorites(type,favs){localStorage.setItem('dz_fav_'+type,JSON.stringify(favs));}
+
+function handleFavoriteClick(btn){
+    var type=btn.getAttribute('data-type');
+    var name=btn.getAttribute('data-name');
+    var item;
+    if(type==='food')item=foodPlaces.find(function(f){return f.name===name;});
+    else if(type==='sleep')item=sleepPlaces.find(function(s){return s.name===name;});
+    else if(type==='spots')item=spots.find(function(s){return s.name===name;});
+    if(item)toggleFavorite(type,item);
+}
+
+function toggleFavorite(type,item){
+    var favs=getFavorites(type);
+    var idx=favs.findIndex(function(f){return f.name===item.name;});
+    if(idx>=0)favs.splice(idx,1);else favs.push(item);
+    saveFavorites(type,favs);
+    if(type==='food')renderFoodList();
+    else if(type==='sleep')renderSleepList();
+    else if(type==='spots')loadSpots();
+    else renderFavorites();
+}
+
+function isFavorite(type,name){var favs=getFavorites(type);return favs.some(function(f){return f.name===name;});}
+
+function renderFavorites(){
+    renderFavList('spots',getFavorites('spots'),'favSpotsList',true);
+    renderFavList('food',getFavorites('food'),'favFoodList',false);
+    renderFavList('sleep',getFavorites('sleep'),'favSleepList',false);
+}
+
+function renderFavList(type,favs,elId,isSpot){
+    var el=document.getElementById(elId);if(!el)return;
+    if(favs.length===0){el.innerHTML='<p class="loading">Aucun favori</p>';return;}
+    var html='';
+    favs.forEach(function(f){
+        html+='<div class="place-card cheap"><div class="place-header"><div class="place-name">'+f.name+'</div><button class="favorite-btn active" data-type="'+type+'" data-name="'+f.name+'" onclick="handleFavoriteClick(this)">⭐</button></div>';
+        if(isSpot)html+='<div class="place-info"><span class="place-tag">💰 '+(f.revenue/1000).toFixed(0)+'k</span></div>';
+        else html+='<div class="place-info"><span class="place-tag">💰 Rp '+f.priceRange+'</span><span class="place-rating">⭐ '+f.rating+'</span></div>';
+        html+='<a class="nav-btn" href="https://www.google.com/maps/search/'+encodeURIComponent(f.name)+',Jakarta" target="_blank">🧭 Navigate</a></div>';
+    });
+    el.innerHTML=html;
+}
+
+function showFavTab(tab){
+    currentFavTab=tab;
+    var btns=document.querySelectorAll('#favorites .sort-btn');
+    btns.forEach(function(b){b.classList.remove('active');});
+    event.target.classList.add('active');
+    document.getElementById('favSpotsList').style.display=tab==='spots'?'block':'none';
+    document.getElementById('favFoodList').style.display=tab==='food'?'block':'none';
+    document.getElementById('favSleepList').style.display=tab==='sleep'?'block':'none';
+    renderFavorites();
+}
+
+// ===== NAVIGATION =====
+function show(id){
+    ['main','plans','settings','foodSleep','favorites'].forEach(function(s){var e=document.getElementById(s);if(e)e.style.display='none';});
+    document.getElementById(id).style.display='block';
+    var btns=document.querySelectorAll('.nav button');
+    btns.forEach(function(b){b.classList.remove('active');});
+    if(id==='main'){btns[0].classList.add('active');loadSpots();}
+    else if(id==='foodSleep'){btns[1].classList.add('active');showTab(currentTab);}
+    else if(id==='favorites'){btns[2].classList.add('active');renderFavorites();}
+    else if(id==='plans'){btns[3].classList.add('active');}
+    else if(id==='settings'){btns[4].classList.add('active');updatePlan();}
+}
+
+// ===== INIT =====
+window.onload=function(){
+    var saved=localStorage.getItem('dz_phone');
+    var savedLevel=localStorage.getItem('dz_level');
+    if(savedLevel)level=savedLevel;
+    if(saved){document.getElementById('login').style.display='none';show('main');setTimeout(gps,500);}
+    else{document.getElementById('login').style.display='flex';}
+    updateBadge();
+    renderFoodList();
+    renderSleepList();
+};
+
+document.getElementById('btnSkip').onclick=function(){document.getElementById('login').style.display='none';show('main');setTimeout(gps,500);};
+document.getElementById('btnContinue').onclick=function(){var p=document.getElementById('phone').value;if(p.length<8){alert('Too short');return;}localStorage.setItem('dz_phone',p);document.getElementById('login').style.display='none';show('main');setTimeout(gps,500);};
+
+function buyViaWhatsApp(plan){var price=plan==='pro'?'29.000':'79.000';var msg='Halo! Saya mau '+plan.toUpperCase()+' ('+price+' IDR)';window.open('https://wa.me/'+yourWhatsAppNumber+'?text='+encodeURIComponent(msg),'_blank');}
+function activateCode(){var code=document.getElementById('activationCode').value.trim().toUpperCase();var msgDiv=document.getElementById('activationMessage');if(!validCodes[code]){msgDiv.innerHTML='<div class="error-msg">❌ Invalid</div>';return;}level=validCodes[code].plan;localStorage.setItem('dz_level',level);updateBadge();msgDiv.innerHTML='<div class="success-msg">✅ Activated!</div>';setTimeout(function(){show('main');},1000);}
+function setRegion(r){currentRegion=r;document.querySelectorAll('.region-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');if(pos)loadSpots();}
+function setSort(t){currentSort=t;document.querySelectorAll('.sort-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');if(pos)loadSpots();}
+function showTab(tab){currentTab=tab;document.querySelectorAll('#foodSleep .sort-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');document.getElementById('foodSection').style.display=tab==='food'?'block':'none';document.getElementById('sleepSection').style.display=tab==='sleep'?'block':'none';if(tab==='food')renderFoodList();else renderSleepList();}
+function filterPrice(type,lvl){currentPriceFilter=lvl;document.querySelectorAll('.'+type+' .price-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');if(type==='food')renderFoodList();else renderSleepList();}
+
+function renderFoodList(){
+    var filtered=foodPlaces.filter(function(f){if(currentPriceFilter==='all')return true;if(currentPriceFilter==='cheap'&&f.priceLevel===1)return true;if(currentPriceFilter==='medium'&&f.priceLevel===2)return true;if(currentPriceFilter==='expensive'&&f.priceLevel>=3)return true;return false;});
+    var html='';
+    filtered.forEach(function(f){
+        var pc=f.priceLevel===1?'cheap':f.priceLevel===2?'medium':'expensive';
+        var ft=f.features.map(function(x){return '<span class="feature-tag">'+x+'</span>';}).join('');
+        var isFav=isFavorite('food',f.name);
+        html+='<div class="place-card '+pc+'" style="position:relative;"><button class="favorite-btn '+(isFav?'active':'inactive')+'" data-type="food" data-name="'+f.name+'" onclick="handleFavoriteClick(this)">'+(isFav?'⭐':'☆')+'</button>';
+        html+='<div class="place-header"><div class="place-name">'+f.name+'</div><div class="place-price place-'+pc+'">Rp '+f.priceRange+'</div></div>';
+        html+='<div class="place-info"><span class="place-tag">📍 '+f.distance+'m</span><span class="place-rating">⭐ '+f.rating+' ('+f.reviews+')</span></div>';
+        html+='<div class="place-features">'+ft+'</div>';
+        html+='<a class="nav-btn" href="https://www.google.com/maps/search/'+encodeURIComponent(f.name)+',Jakarta" target="_blank">🧭 Navigate</a></div>';
+    });
+    document.getElementById('foodList').innerHTML=html||'<p class="loading">Aucun</p>';
+}
+
+function renderSleepList(){
+    var filtered=sleepPlaces.filter(function(s){if(currentPriceFilter==='all')return true;if(currentPriceFilter==='cheap'&&s.priceLevel===1)return true;if(currentPriceFilter==='medium'&&s.priceLevel===2)return true;if(currentPriceFilter==='expensive'&&s.priceLevel>=3)return true;return false;});
+    var html='';
+    filtered.forEach(function(s){
+        var pc=s.priceLevel===1?'cheap':s.priceLevel===2?'medium':'expensive';
+        var ft=s.features.map(function(x){return '<span class="feature-tag">'+x+'</span>';}).join('');
+        var isFav=isFavorite('sleep',s.name);
+        html+='<div class="place-card '+pc+'" style="position:relative;"><button class="favorite-btn '+(isFav?'active':'inactive')+'" data-type="sleep" data-name="'+s.name+'" onclick="handleFavoriteClick(this)">'+(isFav?'⭐':'☆')+'</button>';
+        html+='<div class="place-header"><div class="place-name">'+s.name+'</div><div class="place-price place-'+pc+'">Rp '+s.priceRange+'</div></div>';
+        html+='<div class="place-info"><span class="place-tag">📍 '+s.distance+'m</span><span class="place-rating">⭐ '+s.rating+' ('+s.reviews+')</span></div>';
+        html+='<div class="place-features">'+ft+'</div>';
+        html+='<a class="nav-btn" href="https://www.google.com/maps/search/'+encodeURIComponent(s.name)+',Jakarta" target="_blank">🧭 Navigate</a></div>';
+    });
+    document.getElementById('sleepList').innerHTML=html||'<p class="loading">Aucun</p>';
+}
+
+function gps(){
+    document.getElementById('gps').textContent='📍 Locating...';
+    if(navigator.geolocation){navigator.geolocation.getCurrentPosition(function(p){pos={lat:p.coords.latitude,lng:p.coords.longitude};document.getElementById('gps').textContent='✅ GPS Active';loadSpots();},function(){pos={lat:-6.2425,lng:106.8089};document.getElementById('gps').textContent='❌ Jakarta';loadSpots();},{timeout:8000});}
+    else{pos={lat:-6.2425,lng:106.8089};loadSpots();}
+}
+
+function dist(lat1,lng1,lat2,lng2){var R=6371,dLat=(lat2-lat1)*Math.PI/180,dLng=(lng2-lng1)*Math.PI/180;var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);return Math.round(R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a))*10)/10;}
+function profit(rev,d,wait,avgTrip){var net=rev-(d*2*1500)-(wait*300)-(avgTrip*1000);if(net>=15000)return{lbl:'🟢 Excellent',net:net};else if(net>=5000)return{lbl:'🟡 Good',net:net};else if(net>=0)return{lbl:'🟠 Okay',net:net};else return{lbl:'🔴 Loss',net:net};}
+function calcEfficiency(rev,avgTrip){return Math.round(rev/avgTrip);}
+function isPeakHour(s){var h=new Date().getHours();return s.peakMultiplier>=1.5&&(h>=7&&h<=9||h>=17&&h<=20);}
+function getVehicleBadge(t){return t==='motor'?'<span class="motor-badge">🏍️</span>':t==='car'?'<span class="car-badge">🚗</span>':'<span class="both-badge">🏍️🚗</span>';}
+
+function loadSpots(){
+    if(!pos){document.getElementById('spots').innerHTML='<p class="loading">Waiting...</p>';return;}
+    var r=level==='free'?10:level==='pro'?25:50;
+    var withM=spots.map(function(s){var d=dist(pos.lat,pos.lng,s.lat,s.lng);return{name:s.name,revenue:s.revenue,hourlyRevenue:s.hourlyRevenue,wait:s.wait,avgTrip:s.avgTrip,distance:d,profit:profit(s.revenue,d,s.wait,s.avgTrip),efficiency:calcEfficiency(s.revenue,s.avgTrip),top:s.top,region:s.region,peakMultiplier:s.peakMultiplier,vehicleType:s.vehicleType};});
+    var filtered=withM.filter(function(s){if(currentRegion!=='all'&&s.region!==currentRegion)return false;if(s.distance>r)return false;if(level!=='success'&&s.top)return false;return true;});
+    if(currentSort==='distance')filtered.sort(function(a,b){return a.distance-b.distance;});
+    else if(currentSort==='profit')filtered.sort(function(a,b){return b.profit.net-a.profit.net;});
+    else if(currentSort==='hourly')filtered.sort(function(a,b){return b.hourlyRevenue-a.hourlyRevenue;});
+    var byP=filtered.slice().sort(function(a,b){return b.profit.net-a.profit.net;});
+    byP.forEach(function(s,i){s.profitRank=i+1;});
+    allSpots=filtered;displayedCount=0;
+    document.getElementById('spotCount').textContent=level==='free'?'Showing 3 of '+filtered.length:'Showing '+filtered.length;
+    displayMoreSpots(level==='free'?3:10);
+}
+
+function displayMoreSpots(count){
+    var start=displayedCount,end=Math.min(start+count,allSpots.length),html='';
+    for(var i=start;i<end;i++){
+        var s=allSpots[i];
+        var medal=s.profitRank===1?'🥇':s.profitRank===2?'🥈':s.profitRank===3?'🥉':'';
+        var br=s.profitRank===1?'#00C853':'#00B14F';
+        var distD=s.distance<1?Math.round(s.distance*1000)+' m':s.distance+' km';
+        var isLocked=level==='free'&&i>=3;
+        html+='<div class="spot-card" style="border-left-color:'+br+';position:relative;">';
+        if(isLocked){
+            html+='<div style="opacity:0.3;"><div class="spot-title">🔒 Locked</div><div class="spot-info"><span class="info-badge">📍 '+distD+'</span></div></div>';
+            html+='<div class="locked-overlay" onclick="show(\'plans\')"><div class="lock-icon">🔒</div><div class="lock-text">Upgrade to PRO</div><div class="lock-btn">Unlock</div></div>';
+        }else{
+            var isFav=isFavorite('spots',s.name);
+            html+='<button class="favorite-btn '+(isFav?'active':'inactive')+'" data-type="spots" data-name="'+s.name+'" onclick="handleFavoriteClick(this)">'+(isFav?'⭐':'☆')+'</button>';
+            html+='<div class="spot-title"><span>'+medal+'</span><span>#'+s.profitRank+' • '+s.name+'</span></div>';
+            html+='<div class="spot-info"><span class="info-badge">📍 '+distD+'</span>'+getVehicleBadge(s.vehicleType)+'</div>';
+            html+='<div class="stats-grid"><div class="stat-box"><div class="stat-icon">💰</div><div class="stat-val">'+(s.revenue/1000).toFixed(0)+'k</div></div><div class="stat-box"><div class="stat-icon">🕐</div><div class="stat-val">'+(s.hourlyRevenue/1000).toFixed(0)+'k</div></div><div class="stat-box"><div class="stat-icon">⏱️</div><div class="stat-val">'+s.wait+'m</div></div></div>';
+            html+='<div class="profit-box"><span class="profit-text">'+s.profit.lbl+' (net: '+s.profit.net.toLocaleString()+' IDR)</span></div>';
+            html+='<a class="nav-btn" href="https://www.google.com/maps/search/'+encodeURIComponent(s.name)+',Jakarta" target="_blank">🧭 Navigate</a>';
+        }
+        html+='</div>';
+    }
+    document.getElementById('spots').innerHTML=html;displayedCount=end;
+}
+
+function updateBadge(){var b=document.getElementById('badge');b.textContent=level==='free'?'🆓 FREE':level==='pro'?'⭐ PRO':'👑 SUCCESS';}
+function updatePlan(){document.getElementById('plan').textContent=level.toUpperCase();}
+function clear(){if(confirm('Clear all?')){localStorage.clear();location.reload();}}
+</script>
+</body>
+</html>
+
+
+
+              <script>
+                              function renderFoodList() {
+    var filtered = foodPlaces.filter(function(f) {
+        if(currentPriceFilter === 'all') return true;
+        if(currentPriceFilter === 'cheap' && f.priceLevel === 1) return true;
+        if(currentPriceFilter === 'medium' && f.priceLevel === 2) return true;
+        if(currentPriceFilter === 'expensive' && f.priceLevel >= 3) return true;
+        return false;
+    });
+    
+    var html = '';
+    filtered.forEach(function(f, index) {
+        var priceClass = f.priceLevel === 1 ? 'cheap' : f.priceLevel === 2 ? 'medium' : 'expensive';
+        var features = f.features.map(function(ft) { return '<span class="feature-tag">' + ft + '</span>'; }).join('');
+        var isFav = isFavorite('food', f.name);
+        
+        html += '<div class="place-card ' + priceClass + '" style="position:relative;">';
+        html += '<button class="favorite-btn ' + (isFav ? 'active' : 'inactive') + '" data-type="food" data-name="' + f.name + '" onclick="handleFavoriteClick(this)">';
+        html += (isFav ? '⭐' : '☆');
+        html += '</button>';
+        html += '<div class="place-header"><div class="place-name">' + f.name + '</div><div class="place-price place-' + priceClass + '">Rp ' + f.priceRange + '</div></div>';
+        html += '<div class="place-info"><span class="place-tag">📍 ' + f.distance + 'm</span><span class="place-rating">⭐ ' + f.rating + ' (' + f.reviews + ')</span></div>';
+        html += '<div class="place-features">' + features + '</div>';
+        html += '<a class="nav-btn" href="https://www.google.com/maps/search/' + encodeURIComponent(f.name) + ',Jakarta" target="_blank">🧭 Navigate</a>';
+        html += '</div>';
+    });
+    
+    document.getElementById('foodList').innerHTML = html || '<p class="loading">Aucun restaurant trouvé</p>';
+}
+
+function handleFavoriteClick(btn) {
+    var type = btn.getAttribute('data-type');
+    var name = btn.getAttribute('data-name');
+    
+    var item;
+    if(type === 'food') {
+        item = foodPlaces.find(function(f) { return f.name === name; });
+    } else if(type === 'sleep') {
+        item = sleepPlaces.find(function(s) { return s.name === name; });
+    } else if(type === 'spots') {
+        item = spots.find(function(s) { return s.name === name; });
+    }
+    
+    if(item) {
+        toggleFavorite(type, item);
+    }
+}
+
+
+              </script>
+                        </body>
+                        </html>
+                    .card-title{font-size:16px;font-weight:bold;margin-bottom:8px}
 .card p{color:#888;font-size:13px;margin:5px 0}
 .price{font-size:24px;font-weight:bold;color:#00B14F;margin:10px 0}
 .nav-btn{display:block;padding:12px 24px;background:#00B14F;color:white;text-decoration:none;border-radius:10px;font-weight:bold;font-size:14px;margin-top:10px;text-align:center}
